@@ -89,7 +89,6 @@ class Migration(migrations.Migration):
             name="business_type",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.BusinessType,
                 help_text="The business type.",
                 max_length=10,
@@ -493,7 +492,6 @@ class Migration(migrations.Migration):
                 (
                     "description",
                     models.TextField(
-                        default="",
                         help_text="An arbitrary string attached to the object. Often useful for displaying to users.",
                         max_length=1000,
                         blank=True,
@@ -661,7 +659,6 @@ class Migration(migrations.Migration):
             name="invoice_prefix",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The prefix for the customer used to generate unique invoice numbers.",
                 max_length=255,
             ),
@@ -680,7 +677,6 @@ class Migration(migrations.Migration):
             name="name",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The customer's full name or business name.",
                 max_length=5000,
             ),
@@ -690,7 +686,6 @@ class Migration(migrations.Migration):
             name="phone",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The customer's phone number.",
                 max_length=5000,
             ),
@@ -708,7 +703,6 @@ class Migration(migrations.Migration):
             model_name="customer",
             name="tax_exempt",
             field=djstripe.fields.StripeEnumField(
-                default="",
                 enum=djstripe.enums.CustomerTaxExempt,
                 help_text='Describes the customer\'s tax exemption status. When set to reverse, invoice and receipt PDFs include the text "Reverse charge".',
                 max_length=7,
@@ -788,7 +782,6 @@ class Migration(migrations.Migration):
             name="receipt_url",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="This is the URL to view the receipt for this charge. The receipt is kept up-to-date to the latest state of the charge, including any refunds. If the charge is for an Invoice, the receipt will be stylized as an Invoice receipt.",
                 max_length=5000,
             ),

@@ -86,7 +86,6 @@ class Migration(migrations.Migration):
             name="account_country",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The country of the business associated with this invoice, most often the business creating the invoice.",
                 max_length=2,
             ),
@@ -105,7 +104,6 @@ class Migration(migrations.Migration):
             name="billing_reason",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.InvoiceBillingReason,
                 help_text="Indicates the reason why the invoice was created. subscription_cycle indicates an invoice created by a subscription advancing into a new period. subscription_create indicates an invoice created due to creating a subscription. subscription_update indicates an invoice created due to updating a subscription. subscription is set for all old invoices to indicate either a change to a subscription or a period advancement. manual is set for all invoices unrelated to a subscription (for example: created via the invoice editor). The upcoming value is reserved for simulated invoices per the upcoming invoice endpoint. subscription_threshold indicates an invoice created due to a billing threshold being reached.",
                 max_length=22,
@@ -160,7 +158,6 @@ class Migration(migrations.Migration):
             model_name="invoice",
             name="customer_tax_exempt",
             field=djstripe.fields.StripeEnumField(
-                default="",
                 enum=djstripe.enums.CustomerTaxExempt,
                 help_text="The customer’s tax exempt status. Until the invoice is finalized, this field will equal customer.tax_exempt. Once the invoice is finalized, this field will no longer be updated.",
                 max_length=7,
@@ -376,7 +373,6 @@ class Migration(migrations.Migration):
             name="reason",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.RefundReason,
                 help_text="Reason for the refund.",
                 max_length=25,
@@ -441,7 +437,6 @@ class Migration(migrations.Migration):
                     "account_country",
                     models.CharField(
                         blank=True,
-                        default="",
                         help_text="The country of the business associated with this invoice, most often the business creating the invoice.",
                         max_length=2,
                     ),
@@ -514,7 +509,6 @@ class Migration(migrations.Migration):
                     "billing_reason",
                     djstripe.fields.StripeEnumField(
                         blank=True,
-                        default="",
                         enum=djstripe.enums.InvoiceBillingReason,
                         help_text="Indicates the reason why the invoice was created. subscription_cycle indicates an invoice created by a subscription advancing into a new period. subscription_create indicates an invoice created due to creating a subscription. subscription_update indicates an invoice created due to updating a subscription. subscription is set for all old invoices to indicate either a change to a subscription or a period advancement. manual is set for all invoices unrelated to a subscription (for example: created via the invoice editor). The upcoming value is reserved for simulated invoices per the upcoming invoice endpoint. subscription_threshold indicates an invoice created due to a billing threshold being reached.",
                         max_length=22,
@@ -586,7 +580,6 @@ class Migration(migrations.Migration):
                 (
                     "customer_tax_exempt",
                     djstripe.fields.StripeEnumField(
-                        default="",
                         enum=djstripe.enums.CustomerTaxExempt,
                         help_text="The customer’s tax exempt status. Until the invoice is finalized, this field will equal customer.tax_exempt. Once the invoice is finalized, this field will no longer be updated.",
                         max_length=7,
@@ -627,7 +620,6 @@ class Migration(migrations.Migration):
                     "hosted_invoice_url",
                     models.TextField(
                         blank=True,
-                        default="",
                         help_text="The URL for the hosted invoice page, which allows customers to view and pay an invoice. If the invoice has not been frozen yet, this will be null.",
                         max_length=799,
                     ),
@@ -636,7 +628,6 @@ class Migration(migrations.Migration):
                     "invoice_pdf",
                     models.TextField(
                         blank=True,
-                        default="",
                         help_text="The link to download the PDF for the invoice. If the invoice has not been frozen yet, this will be null.",
                         max_length=799,
                     ),
@@ -653,7 +644,6 @@ class Migration(migrations.Migration):
                     "number",
                     models.CharField(
                         blank=True,
-                        default="",
                         help_text="A unique, identifying string that appears on emails sent to the customer for this invoice. This starts with the customer’s unique invoice_prefix if it is specified.",
                         max_length=64,
                     ),
@@ -712,7 +702,6 @@ class Migration(migrations.Migration):
                     "statement_descriptor",
                     models.CharField(
                         blank=True,
-                        default="",
                         help_text="An arbitrary string to be displayed on your customer's credit card statement. The statement description may not include <>\"' characters, and will appear on your customer's statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.",
                         max_length=22,
                     ),
@@ -893,7 +882,6 @@ class Migration(migrations.Migration):
                     "display_name",
                     models.CharField(
                         blank=True,
-                        default="",
                         help_text="The display name of the tax rates as it will appear to your customer on their receipt email, PDF, and the hosted invoice page.",
                         max_length=50,
                     ),
@@ -908,7 +896,6 @@ class Migration(migrations.Migration):
                     "jurisdiction",
                     models.CharField(
                         blank=True,
-                        default="",
                         help_text="The jurisdiction for the tax rate.",
                         max_length=50,
                     ),

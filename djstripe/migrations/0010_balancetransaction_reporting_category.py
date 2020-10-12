@@ -17,7 +17,6 @@ class Migration(migrations.Migration):
             model_name="balancetransaction",
             name="reporting_category",
             field=djstripe.fields.StripeEnumField(
-                default="",
                 enum=djstripe.enums.BalanceTransactionReportingCategory,
                 help_text="More information: https://stripe.com/docs/reports/reporting-categories",
                 max_length=29,
@@ -27,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="balancetransaction",
             name="source",
-            field=djstripe.fields.StripeIdField(default="", max_length=255),
+            field=djstripe.fields.StripeIdField(max_length=255),
             preserve_default=False,
         ),
     ]

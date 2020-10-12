@@ -36,7 +36,6 @@ class Migration(migrations.Migration):
             name="status",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.InvoiceStatus,
                 help_text="The status of the invoice, one of draft, open, paid, uncollectible, or void.",
                 max_length=13,
@@ -47,7 +46,6 @@ class Migration(migrations.Migration):
             name="status",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.InvoiceStatus,
                 help_text="The status of the invoice, one of draft, open, paid, uncollectible, or void.",
                 max_length=13,

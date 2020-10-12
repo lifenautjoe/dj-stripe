@@ -182,7 +182,6 @@ class Transfer(StripeModel):
     )
     transfer_group = models.CharField(
         max_length=255,
-        default="",
         blank=True,
         help_text="A string that identifies this transaction as part of a group.",
     )

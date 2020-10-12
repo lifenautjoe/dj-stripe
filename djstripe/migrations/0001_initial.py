@@ -188,7 +188,6 @@ class Migration(migrations.Migration):
                 (
                     "payout_statement_descriptor",
                     models.CharField(
-                        default="",
                         help_text="The text that appears on the bank account statement for payouts.",
                         max_length=255,
                         null=True,
@@ -213,7 +212,6 @@ class Migration(migrations.Migration):
                 (
                     "statement_descriptor",
                     models.CharField(
-                        default="",
                         help_text="The default text that appears on credit card statements when a charge is made directly on the account",
                         max_length=255,
                         blank=True,
@@ -245,7 +243,6 @@ class Migration(migrations.Migration):
                     models.CharField(
                         help_text="The timezone used in the Stripe Dashboard for this account.",
                         max_length=50,
-                        default="",
                     ),
                 ),
                 (

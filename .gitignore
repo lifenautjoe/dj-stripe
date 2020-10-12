@@ -19,3 +19,4 @@ site/
 
 # Do not commit Poetry lockfiles for libraries
 poetry.lock
+/.idea

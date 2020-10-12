@@ -116,7 +116,6 @@ class Migration(migrations.Migration):
             name="display_name",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The display name for this account. This is used on the Stripe Dashboard to differentiate between accounts.",
                 max_length=255,
             ),
@@ -126,7 +125,6 @@ class Migration(migrations.Migration):
             name="support_email",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A publicly shareable support email address for the business",
                 max_length=255,
             ),
@@ -136,7 +134,6 @@ class Migration(migrations.Migration):
             name="support_phone",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A publicly shareable support phone number for the business",
                 max_length=255,
             ),
@@ -157,7 +154,6 @@ class Migration(migrations.Migration):
             name="name",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Name of the coupon displayed to customers on for instance invoices or receipts.",
                 max_length=5000,
             ),
@@ -932,9 +928,7 @@ class Migration(migrations.Migration):
             model_name="account",
             name="business_name",
             field=models.CharField(
-                blank=True,
-                default="",
-                help_text="The publicly visible name of the business",
+                blank=True,                help_text="The publicly visible name of the business",
                 max_length=255,
             ),
         ),
@@ -943,7 +937,6 @@ class Migration(migrations.Migration):
             name="business_primary_color",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A CSS hex color value representing the primary branding color for this account",
                 max_length=7,
             ),
@@ -953,7 +946,6 @@ class Migration(migrations.Migration):
             name="business_url",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The publicly visible website of the business",
                 max_length=200,
             ),
@@ -963,7 +955,6 @@ class Migration(migrations.Migration):
             name="payout_statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The text that appears on the bank account statement for payouts.",
                 max_length=255,
             ),
@@ -973,7 +964,6 @@ class Migration(migrations.Migration):
             name="product_description",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Internal-only description of the product sold or service provided by the business. It’s used by Stripe for risk and underwriting purposes.",
                 max_length=255,
             ),
@@ -983,7 +973,6 @@ class Migration(migrations.Migration):
             name="support_url",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A publicly shareable URL that provides support for this account",
                 max_length=200,
             ),
@@ -993,7 +982,6 @@ class Migration(migrations.Migration):
             name="account_holder_name",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The name of the person or business that owns the bank account.",
                 max_length=5000,
             ),
@@ -1003,7 +991,6 @@ class Migration(migrations.Migration):
             name="address_city",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="City/District/Suburb/Town/Village.",
                 max_length=5000,
             ),
@@ -1013,7 +1000,6 @@ class Migration(migrations.Migration):
             name="address_country",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Billing address country.",
                 max_length=5000,
             ),
@@ -1023,7 +1009,6 @@ class Migration(migrations.Migration):
             name="address_line1",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Street address/PO Box/Company name.",
                 max_length=5000,
             ),
@@ -1033,7 +1018,6 @@ class Migration(migrations.Migration):
             name="address_line1_check",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.CardCheckResult,
                 help_text="If `address_line1` was provided, results of the check.",
                 max_length=11,
@@ -1044,7 +1028,6 @@ class Migration(migrations.Migration):
             name="address_line2",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Apartment/Suite/Unit/Building.",
                 max_length=5000,
             ),
@@ -1054,7 +1037,6 @@ class Migration(migrations.Migration):
             name="address_state",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="State/County/Province/Region.",
                 max_length=5000,
             ),
@@ -1063,7 +1045,7 @@ class Migration(migrations.Migration):
             model_name="card",
             name="address_zip",
             field=models.TextField(
-                blank=True, default="", help_text="ZIP or postal code.", max_length=5000
+                blank=True, help_text="ZIP or postal code.", max_length=5000
             ),
         ),
         migrations.AlterField(
@@ -1071,7 +1053,6 @@ class Migration(migrations.Migration):
             name="address_zip_check",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.CardCheckResult,
                 help_text="If `address_zip` was provided, results of the check.",
                 max_length=11,
@@ -1082,7 +1063,6 @@ class Migration(migrations.Migration):
             name="country",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Two-letter ISO code representing the country of the card.",
                 max_length=2,
             ),
@@ -1092,7 +1072,6 @@ class Migration(migrations.Migration):
             name="cvc_check",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.CardCheckResult,
                 help_text="If a CVC was provided, results of the check.",
                 max_length=11,
@@ -1103,7 +1082,6 @@ class Migration(migrations.Migration):
             name="dynamic_last4",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="(For tokenized numbers only.) The last four digits of the device account number.",
                 max_length=4,
             ),
@@ -1113,7 +1091,6 @@ class Migration(migrations.Migration):
             name="fingerprint",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Uniquely identifies this particular card number.",
                 max_length=16,
             ),
@@ -1122,7 +1099,7 @@ class Migration(migrations.Migration):
             model_name="card",
             name="name",
             field=models.TextField(
-                blank=True, default="", help_text="Cardholder name.", max_length=5000
+                blank=True, help_text="Cardholder name.", max_length=5000
             ),
         ),
         migrations.AlterField(
@@ -1130,7 +1107,6 @@ class Migration(migrations.Migration):
             name="tokenization_method",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.CardTokenizationMethod,
                 help_text="If the card number is tokenized, this is the method that was used.",
                 max_length=11,
@@ -1141,7 +1117,6 @@ class Migration(migrations.Migration):
             name="failure_code",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.ApiErrorCode,
                 help_text="Error code explaining reason for charge failure if available.",
                 max_length=42,
@@ -1152,7 +1127,6 @@ class Migration(migrations.Migration):
             name="failure_message",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Message to user further explaining reason for charge failure if available.",
                 max_length=5000,
             ),
@@ -1162,7 +1136,6 @@ class Migration(migrations.Migration):
             name="receipt_email",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The email address that the receipt for this charge was sent to.",
                 max_length=800,
             ),
@@ -1172,7 +1145,6 @@ class Migration(migrations.Migration):
             name="receipt_number",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The transaction number that appears on email receipts sent for this charge.",
                 max_length=14,
             ),
@@ -1182,7 +1154,6 @@ class Migration(migrations.Migration):
             name="statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="An arbitrary string to be displayed on your customer's credit card statement. The statement description may not include <>\"' characters, and will appear on your customer's statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.",
                 max_length=22,
             ),
@@ -1192,7 +1163,6 @@ class Migration(migrations.Migration):
             name="transfer_group",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A string that identifies this transaction as part of a group.",
                 max_length=255,
             ),
@@ -1202,7 +1172,6 @@ class Migration(migrations.Migration):
             name="business_vat_id",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The customer's VAT identification number.",
                 max_length=20,
             ),
@@ -1211,7 +1180,6 @@ class Migration(migrations.Migration):
             model_name="customer",
             name="currency",
             field=djstripe.fields.StripeCurrencyCodeField(
-                default="",
                 help_text="The currency the customer can be charged in for recurring billing purposes",
                 max_length=3,
             ),
@@ -1219,19 +1187,18 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="customer",
             name="email",
-            field=models.TextField(blank=True, default="", max_length=5000),
+            field=models.TextField(blank=True, max_length=5000),
         ),
         migrations.AlterField(
             model_name="event",
             name="idempotency_key",
-            field=models.TextField(blank=True, default=""),
+            field=models.TextField(blank=True),
         ),
         migrations.AlterField(
             model_name="event",
             name="request_id",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Information about the request that triggered this event, for traceability purposes. If empty string then this is an old entry without that data. If Null then this is not an old entry, but a Stripe 'automated' event with no associated request.",
                 max_length=50,
             ),
@@ -1241,7 +1208,6 @@ class Migration(migrations.Migration):
             name="hosted_invoice_url",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The URL for the hosted invoice page, which allows customers to view and pay an invoice. If the invoice has not been frozen yet, this will be null.",
                 max_length=799,
             ),
@@ -1251,7 +1217,6 @@ class Migration(migrations.Migration):
             name="invoice_pdf",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="The link to download the PDF for the invoice. If the invoice has not been frozen yet, this will be null.",
                 max_length=799,
             ),
@@ -1261,7 +1226,6 @@ class Migration(migrations.Migration):
             name="number",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A unique, identifying string that appears on emails sent to the customer for this invoice. This starts with the customer’s unique invoice_prefix if it is specified.",
                 max_length=64,
             ),
@@ -1271,7 +1235,6 @@ class Migration(migrations.Migration):
             name="statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="An arbitrary string to be displayed on your customer's credit card statement. The statement description may not include <>\"' characters, and will appear on your customer's statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.",
                 max_length=22,
             ),
@@ -1281,7 +1244,6 @@ class Migration(migrations.Migration):
             name="failure_code",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.PayoutFailureCode,
                 help_text="Error code explaining reason for transfer failure if available. See https://stripe.com/docs/api/python#transfer_failures.",
                 max_length=23,
@@ -1292,7 +1254,6 @@ class Migration(migrations.Migration):
             name="failure_message",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="Message to user further explaining reason for payout failure if available.",
             ),
         ),
@@ -1301,7 +1262,6 @@ class Migration(migrations.Migration):
             name="statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Extra information about a payout to be displayed on the user's bank statement.",
                 max_length=255,
             ),
@@ -1311,7 +1271,6 @@ class Migration(migrations.Migration):
             name="aggregate_usage",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.PlanAggregateUsage,
                 help_text="Specifies a usage aggregation strategy for plans of usage_type=metered. Allowed values are `sum` for summing up all usage during a period, `last_during_period` for picking the last usage record reported within a period, `last_ever` for picking the last usage record ever (across period bounds) or max which picks the usage record with the maximum reported usage during a period. Defaults to `sum`.",
                 max_length=18,
@@ -1322,7 +1281,6 @@ class Migration(migrations.Migration):
             name="billing_scheme",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.BillingScheme,
                 help_text="Describes how to compute the price per period. Either `per_unit` or `tiered`. `per_unit` indicates that the fixed amount (specified in amount) will be charged per unit in quantity (for plans with `usage_type=licensed`), or per unit of total usage (for plans with `usage_type=metered`). `tiered` indicates that the unit pricing will be computed using a tiering strategy as defined using the tiers and tiers_mode attributes.",
                 max_length=8,
@@ -1333,7 +1291,6 @@ class Migration(migrations.Migration):
             name="nickname",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="A brief description of the plan, hidden from customers.",
                 max_length=5000,
             ),
@@ -1343,7 +1300,6 @@ class Migration(migrations.Migration):
             name="caption",
             field=models.TextField(
                 blank=True,
-                default="",
                 help_text="A short one-line description of the product, meant to be displayableto the customer. Only applicable to products of `type=good`.",
                 max_length=5000,
             ),
@@ -1353,7 +1309,6 @@ class Migration(migrations.Migration):
             name="statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Extra information about a product which will appear on your customer's credit card statement. In the case that multiple products are billed at once, the first statement descriptor will be used. Only available on products of type=`service`.",
                 max_length=22,
             ),
@@ -1361,14 +1316,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="product",
             name="unit_label",
-            field=models.CharField(blank=True, default="", max_length=12),
+            field=models.CharField(blank=True, max_length=12),
         ),
         migrations.AlterField(
             model_name="refund",
             name="failure_reason",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.RefundFailureReason,
                 help_text="If the refund failed, the reason for refund failure if known.",
                 max_length=24,
@@ -1379,7 +1333,6 @@ class Migration(migrations.Migration):
             name="reason",
             field=djstripe.fields.StripeEnumField(
                 blank=True,
-                default="",
                 enum=djstripe.enums.RefundReason,
                 help_text="Reason for the refund.",
                 max_length=21,
@@ -1390,7 +1343,6 @@ class Migration(migrations.Migration):
             name="receipt_number",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="The transaction number that appears on email receipts sent for this charge.",
                 max_length=9,
             ),
@@ -1400,7 +1352,6 @@ class Migration(migrations.Migration):
             name="currency",
             field=djstripe.fields.StripeCurrencyCodeField(
                 blank=True,
-                default="",
                 help_text="Three-letter ISO currency code",
                 max_length=3,
             ),
@@ -1410,7 +1361,6 @@ class Migration(migrations.Migration):
             name="statement_descriptor",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="Extra information about a source. This will appear on your customer's statement every time you charge the source.",
                 max_length=255,
             ),
@@ -1420,7 +1370,6 @@ class Migration(migrations.Migration):
             name="transfer_group",
             field=models.CharField(
                 blank=True,
-                default="",
                 help_text="A string that identifies this transaction as part of a group.",
                 max_length=255,
             ),

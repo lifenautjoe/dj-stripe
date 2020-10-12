@@ -43,7 +43,7 @@ class Account(StripeModel):
         null=True, blank=True, help_text="Optional information related to the business."
     )
     business_type = StripeEnumField(
-        enum=enums.BusinessType, default="", blank=True, help_text="The business type."
+        enum=enums.BusinessType, blank=True, help_text="The business type."
     )
     charges_enabled = models.BooleanField(
         help_text="Whether the account can create live charges"
@@ -83,7 +83,6 @@ class Account(StripeModel):
     )
     product_description = models.CharField(
         max_length=255,
-        default="",
         blank=True,
         help_text="Internal-only description of the product sold or service provided "
         "by the business. It’s used by Stripe for risk and underwriting purposes.",

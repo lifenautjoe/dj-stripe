@@ -112,7 +112,6 @@ class Coupon(StripeModel):
     )
     name = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text=(
             "Name of the coupon displayed to customers on for instance invoices "
@@ -195,7 +194,6 @@ class BaseInvoice(StripeModel):
 
     account_country = models.CharField(
         max_length=2,
-        default="",
         blank=True,
         help_text="The country of the business associated with this invoice, "
         "most often the business creating the invoice.",
@@ -252,7 +250,6 @@ class BaseInvoice(StripeModel):
         "advance without an explicit action.",
     )
     billing_reason = StripeEnumField(
-        default="",
         blank=True,
         enum=enums.InvoiceBillingReason,
         help_text="Indicates the reason why the invoice was created. "
@@ -332,7 +329,6 @@ class BaseInvoice(StripeModel):
     )
     customer_tax_exempt = StripeEnumField(
         enum=enums.CustomerTaxExempt,
-        default="",
         help_text="The customer’s tax exempt status. Until the invoice is finalized, "
         "this field will equal customer.tax_exempt. Once the invoice is "
         "finalized, this field will no longer be updated.",
@@ -375,7 +371,6 @@ class BaseInvoice(StripeModel):
     )
     hosted_invoice_url = models.TextField(
         max_length=799,
-        default="",
         blank=True,
         help_text="The URL for the hosted invoice page, which allows customers to view "
         "and pay an invoice. If the invoice has not been frozen yet, "
@@ -383,7 +378,6 @@ class BaseInvoice(StripeModel):
     )
     invoice_pdf = models.TextField(
         max_length=799,
-        default="",
         blank=True,
         help_text=(
             "The link to download the PDF for the invoice. "
@@ -397,7 +391,6 @@ class BaseInvoice(StripeModel):
     )
     number = models.CharField(
         max_length=64,
-        default="",
         blank=True,
         help_text=(
             "A unique, identifying string that appears on emails sent to the customer "
@@ -462,7 +455,6 @@ class BaseInvoice(StripeModel):
     )
     statement_descriptor = models.CharField(
         max_length=22,
-        default="",
         blank=True,
         help_text="An arbitrary string to be displayed on your customer's "
         "credit card statement. The statement description may not include <>\"' "
@@ -472,7 +464,6 @@ class BaseInvoice(StripeModel):
         "some may display it incorrectly or not at all.",
     )
     status = StripeEnumField(
-        default="",
         blank=True,
         enum=enums.InvoiceStatus,
         help_text="The status of the invoice, one of draft, open, paid, "
@@ -1017,7 +1008,6 @@ class Plan(StripeModel):
     )
     aggregate_usage = StripeEnumField(
         enum=enums.PlanAggregateUsage,
-        default="",
         blank=True,
         help_text=(
             "Specifies a usage aggregation strategy for plans of usage_type=metered. "
@@ -1035,7 +1025,6 @@ class Plan(StripeModel):
     )
     billing_scheme = StripeEnumField(
         enum=enums.BillingScheme,
-        default="",
         blank=True,
         help_text=(
             "Describes how to compute the price per period. "
@@ -1062,7 +1051,6 @@ class Plan(StripeModel):
     )
     nickname = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text="A brief description of the plan, hidden from customers.",
     )
@@ -1861,7 +1849,6 @@ class TaxRate(StripeModel):
     )
     display_name = models.CharField(
         max_length=50,
-        default="",
         blank=True,
         help_text="The display name of the tax rates as it will appear to your "
         "customer on their receipt email, PDF, and the hosted invoice page.",
@@ -1871,7 +1858,6 @@ class TaxRate(StripeModel):
     )
     jurisdiction = models.CharField(
         max_length=50,
-        default="",
         blank=True,
         help_text="The jurisdiction for the tax rate.",
     )

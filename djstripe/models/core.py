@@ -143,13 +143,11 @@ class Charge(StripeModel):
     )
     failure_code = StripeEnumField(
         enum=enums.ApiErrorCode,
-        default="",
         blank=True,
         help_text="Error code explaining reason for charge failure if available.",
     )
     failure_message = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text="Message to user further explaining reason "
         "for charge failure if available.",
@@ -198,20 +196,17 @@ class Charge(StripeModel):
     )
     receipt_email = models.TextField(
         max_length=800,  # yup, 800.
-        default="",
         blank=True,
         help_text="The email address that the receipt for this charge was sent to.",
     )
     receipt_number = models.CharField(
         max_length=14,
-        default="",
         blank=True,
         help_text="The transaction number that appears "
         "on email receipts sent for this charge.",
     )
     receipt_url = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text="This is the URL to view the receipt for this charge. "
         "The receipt is kept up-to-date to the latest state of the charge, "
@@ -235,7 +230,6 @@ class Charge(StripeModel):
     # TODO: source_transfer
     statement_descriptor = models.CharField(
         max_length=22,
-        default="",
         blank=True,
         help_text="An arbitrary string to be displayed on your customer's "
         "credit card statement. The statement description may not include <>\"' "
@@ -256,7 +250,6 @@ class Charge(StripeModel):
     )
     transfer_group = models.CharField(
         max_length=255,
-        default="",
         blank=True,
         help_text="A string that identifies this transaction as part of a group.",
     )
@@ -430,12 +423,10 @@ class Customer(StripeModel):
     #  (to tax_info, which was itself moved to CustomerTaxId)
     business_vat_id = models.CharField(
         max_length=20,
-        default="",
         blank=True,
         help_text="The customer's VAT identification number.",
     )
     currency = StripeCurrencyCodeField(
-        default="",
         help_text="The currency the customer can be charged in for "
         "recurring billing purposes",
     )
@@ -465,9 +456,7 @@ class Customer(StripeModel):
         "the date that the discount will end.",
     )
     # </discount>
-    email = models.TextField(max_length=5000, default="", blank=True)
     invoice_prefix = models.CharField(
-        default="",
         blank=True,
         max_length=255,
         help_text=(
@@ -490,13 +479,11 @@ class Customer(StripeModel):
     )
     name = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text="The customer's full name or business name.",
     )
     phone = models.TextField(
         max_length=5000,
-        default="",
         blank=True,
         help_text="The customer's phone number.",
     )
@@ -514,7 +501,6 @@ class Customer(StripeModel):
     )
     tax_exempt = StripeEnumField(
         enum=enums.CustomerTaxExempt,
-        default="",
         help_text="Describes the customer's tax exemption status. When set to reverse, "
         'invoice and receipt PDFs include the text "Reverse charge".',
     )
@@ -1329,10 +1315,8 @@ class Event(StripeModel):
         "for traceability purposes. If empty string then this is an old entry "
         "without that data. If Null then this is not an old entry, but a Stripe "
         "'automated' event with no associated request.",
-        default="",
         blank=True,
     )
-    idempotency_key = models.TextField(default="", blank=True)
     type = models.CharField(max_length=250, help_text="Stripe's event description code")
 
     def str_parts(self):
@@ -1510,7 +1494,6 @@ class PaymentIntent(StripeModel):
     )
     description = models.TextField(
         max_length=1000,
-        default="",
         blank=True,
         help_text=(
             "An arbitrary string attached to the object. "
@@ -1804,13 +1787,11 @@ class Payout(StripeModel):
     )
     failure_code = StripeEnumField(
         enum=enums.PayoutFailureCode,
-        default="",
         blank=True,
         help_text="Error code explaining reason for transfer failure if available. "
         "See https://stripe.com/docs/api/python#transfer_failures.",
     )
     failure_message = models.TextField(
-        default="",
         blank=True,
         help_text="Message to user further explaining reason for "
         "payout failure if available.",
@@ -1826,7 +1807,6 @@ class Payout(StripeModel):
     # TODO: source_type
     statement_descriptor = models.CharField(
         max_length=255,
-        default="",
         blank=True,
         help_text="Extra information about a payout to be displayed "
         "on the user's bank statement.",
@@ -1889,7 +1869,6 @@ class Product(StripeModel):
         ),
     )
     caption = models.TextField(
-        default="",
         blank=True,
         max_length=5000,
         help_text=(
@@ -1943,7 +1922,6 @@ class Product(StripeModel):
     # Fields available to `service` only
     statement_descriptor = models.CharField(
         max_length=22,
-        default="",
         blank=True,
         help_text=(
             "Extra information about a product which will appear on your customer's "
@@ -1952,7 +1930,6 @@ class Product(StripeModel):
             "Only available on products of type=`service`."
         ),
     )
-    unit_label = models.CharField(max_length=12, default="", blank=True)
 
     def __str__(self):
         return self.name
@@ -1992,19 +1969,16 @@ class Refund(StripeModel):
     )
     failure_reason = StripeEnumField(
         enum=enums.RefundFailureReason,
-        default="",
         blank=True,
         help_text="If the refund failed, the reason for refund failure if known.",
     )
     reason = StripeEnumField(
         enum=enums.RefundReason,
         blank=True,
-        default="",
         help_text="Reason for the refund.",
     )
     receipt_number = models.CharField(
         max_length=9,
-        default="",
         blank=True,
         help_text="The transaction number that appears on email receipts sent "
         "for this charge.",
